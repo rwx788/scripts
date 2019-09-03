@@ -28,7 +28,7 @@ test -x $XEPHYR || {echo "Xephyr executable not found."}
 
 case "$1" in
     start)
-	$XEPHYR -ac -br -noreset -screen 800x600 :1 &
+	$XEPHYR -ac -br -noreset -screen 1024x768 :1 &
 	sleep 1
 	DISPLAY=:1.0 $I3 &
 	sleep 1
