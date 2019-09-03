@@ -13,11 +13,11 @@ EOF
 }
 
 function i3_pid() {
-    /bin/pidof i3 | cut -d\ -f1
+    /bin/pidof i3 | cut -d\  -f1
 }
 
 function xephyr_pid() {
-    /bin/pidof Xephyr | cut -d\ -f1
+    /bin/pidof Xephyr | cut -d\  -f1
 }
 
 [ $# -lt 1 ] && usage
