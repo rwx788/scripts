@@ -45,7 +45,7 @@ test -x $XEPHYR || {echo "Xephyr executable not found."}
 
 case "$COMMAND" in
     start)
-	$XEPHYR -ac -br -noreset -screen 1024x768 :1 &
+	$XEPHYR -ac -br -noreset -screen 1280x720 :1 &
 	sleep 1
     if [ -z "$I3CONFIG" ]; then
         DISPLAY=:1.0 $I3 &
