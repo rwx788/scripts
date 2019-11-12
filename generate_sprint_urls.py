@@ -10,7 +10,7 @@ def get_sprint_date(sprint_number = None):
     # Init with first sprint due date
     due_date = datetime.datetime(2019, 8, 27, 23, 59, 59, 999999)
     start_date = due_date
-    sprint_count = 50
+    sprint_count = 51
     while sprint_count <= sprint_number:
             start_date = due_date + datetime.timedelta(minutes=1)
             due_date += datetime.timedelta(days=14)
@@ -32,7 +32,7 @@ def generate_urls_list(init_sprint_number, nr):
         filter_url = 'https://progress.opensuse.org/issues?utf8=✓&set_filter=1&f[]=subject&op[subject]=~&v[subject][]=[y]&f[]=due_date&op[due_date]=><&v[due_date][]=%s&v[due_date][]=%s&f[]=&c[]=project&c[]=subject&c[]=status&c[]=assigned_to&c[]=fixed_version&c[]=relations&c[]=priority&c[]=updated_on&c[]=category&c[]=due_date&c[]=start_date&c[]=estimated_hours&group_by=status'
         filter_url = filter_url %(str_start_date, str_due_date)
         # form shorten url
-        wishId = 'qa_sle_functional_y_sprint%s' %(sprint)
+        wishId = 'qsf_y_sprint_%s' %(sprint)
 
         r = requests.post('http://s.qa.suse.de/', data={'url': filter_url, 'wishId': wishId})
 
