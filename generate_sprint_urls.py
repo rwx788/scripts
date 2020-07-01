@@ -29,7 +29,7 @@ def generate_urls_list(init_sprint_number, nr):
         str_due_date = sprint_info['due_date'].strftime(dt_format)
 
         # form redmine url
-        filter_url = 'https://progress.opensuse.org/issues?utf8=✓&set_filter=1&f[]=subject&op[subject]=~&v[subject][]=[y]&f[]=due_date&op[due_date]=><&v[due_date][]=%s&v[due_date][]=%s&f[]=&c[]=project&c[]=subject&c[]=status&c[]=assigned_to&c[]=fixed_version&c[]=relations&c[]=priority&c[]=updated_on&c[]=category&c[]=due_date&c[]=start_date&c[]=estimated_hours&group_by=status'
+        filter_url = 'https://progress.opensuse.org/issues?utf8=✓&set_filter=1&f[]=subject&op[subject]=~&v[subject][]=[y]&f[]=due_date&op[due_date]=><&v[due_date][]=%s&v[due_date][]=%s&f[]=&c[]=project&c[]=subject&c[]=status&c[]=assigned_to&c[]=fixed_version&c[]=relations&c[]=priority&c[]=category&c[]=due_date&c[]=start_date&c[]=estimated_hours&group_by=status'
         filter_url = filter_url %(str_start_date, str_due_date)
         # form shorten url
         wishId = 'qsf_y_sprint_%s' %(sprint)
