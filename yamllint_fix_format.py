@@ -41,7 +41,7 @@ try:
         dump = pyyaml.dump( yaml,
                             Dumper=MyDumper,
                             indent=2,
-                            width=75,
+                            width=82,
                             explicit_start=True,
                             default_flow_style=False,
                             allow_unicode=True,
