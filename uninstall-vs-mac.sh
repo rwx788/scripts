@@ -3,12 +3,9 @@
 print_help()
 {
   echo "Usage: uninstall-vs-mac.sh [options]"
-  echo "    -a,  --all             #remove everything"
-  echo "    -vs, --visual-studio   #remove VisualStudio (not recommended)"
-  echo "    -x,  --xamarin         #remove all xamarin SDKs and tools"
-  echo "    -xa, --xamarin-android #remove Xamarin Android SDK"
-  echo "    -xi, --xamarin-ios     #remove Xamarin iOS SDK"
-  echo "    -xm, --xamarin-mac     #remove Xamarin Mac SDK"
+  echo "    -vs,  --visual-studio   #remove VisualStudio for Mac and Xamarin SDKs"
+  echo "    -xjb, --xamarin-jb      #remove all JetBrains Xamarin SDKs and tools"
+  echo "    -xvs, --xamarin-vs      #remove all Visual Studio Xamarin SDKs and tools"
 }
 
 remove_vs()
@@ -35,8 +32,24 @@ remove_vs()
   rm -rf ~/Library/Logs/VisualStudioInstaller/
 }
 
-remove_xamarin()
+remove_xamarin_jb(){
+  # Uninstall Xamarin.Android, Xamarin.iOS, Xamarin.Mac
+  echo "Uninstalling Jetbrains Xamarin Android, iOS and Mac JB SDKs..."
+
+  sudo rm -rf /Library/Frameworks/Mono.framework/External/xbuild/Xamarin
+  sudo rm -rf /Library/Frameworks/Mono.framework/External/xbuild-frameworks
+  sudo rm -rf /Library/Frameworks/Xamarin.Android.framework
+  sudo rm -rf /Library/Frameworks/Xamarin.iOS.framework
+  sudo rm -rf /Library/Frameworks/Xamarin.Mac.framework
+
+  sudo pkgutil --forget com.jetbrains.xamarin.android.sdk
+  sudo pkgutil --forget com.jetbrains.xamarin.macios.sdk
+}
+
+remove_xamarin_vs()
 {
+  # Uninstall Xamarin.Android, Xamarin.iOS,
+  echo "Uninstalling Jetbrains Xamarin Android, iOS and Mac VS SDKs..."
   remove_xamarin_android
   remove_xamarin_ios
   remove_xamarin_mac
@@ -92,24 +105,15 @@ fi
 
 for key in "$@"; do
   case $key in
-    -a|--all)
-      remove_vs
-      remove_xamarin
-      ;;
     -vs|--visual-studio)
       remove_vs
+      remove_xamarin_vs
       ;;
-    -x|--xamarin)
-      remove_xamarin
+    -xjb|--xamarin-jb)
+      remove_xamarin_jb
       ;;
-    -xa|--xamarin-android)
-      remove_xamarin_android
-      ;;
-    -xi|--xamarin-ios)
-      remove_xamarin_ios
-      ;;
-    -xm|--xamarin-mac)
-      remove_xamarin_mac
+    -xvs|--xamarin-vs)
+      remove_xamarin_vs
       ;;
     --help)
       print_help
