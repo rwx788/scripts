@@ -10,6 +10,8 @@ print_help()
 
 remove_vs()
 {
+  remove_xamarin_vs
+
   # Uninstall Visual Studio for Mac
   echo "Uninstalling Visual Studio for Mac..."
 
@@ -57,6 +59,7 @@ remove_xamarin_vs()
   echo "Uninstalling the Xamarin Profiler..."
 
   sudo rm -rf "/Applications/Xamarin Profiler.app"
+  sudo pkgutil --forget com.xamarin.profiler
 
   # Uninstall Workbooks and Inspector
   echo "Uninstalling Workbooks and Inspector..."
@@ -107,7 +110,6 @@ for key in "$@"; do
   case $key in
     -vs|--visual-studio)
       remove_vs
-      remove_xamarin_vs
       ;;
     -xjb|--xamarin-jb)
       remove_xamarin_jb
