@@ -10,6 +10,8 @@ parser.add_argument('--output', '-o', default='test.plist',
                     help='Output file name and path')
 parser.add_argument('--nested-array', '-na', type=int,
                     help='Levels of nesting for the array structure, default = 5')
+parser.add_argument('--format', '-f', choices=['xml', 'binary'], default='xml',
+                    help='Output format of the plist, default is xml')
 
 args = parser.parse_args()
 
@@ -36,5 +38,7 @@ if args.nested_array is not None:
         a_list = [a_list.copy()]
     pl.update(aListOfLists = a_list)
 
+format = (plistlib.FMT_BINARY, plistlib.FMT_XML)[args.format == 'xml']
+
 with open(args.output, 'wb') as fp:
-    plistlib.dump(pl, fp, fmt=plistlib.FMT_XML)
+    plistlib.dump(pl, fp, fmt = format)
