@@ -6,7 +6,7 @@ import time
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Generate property list file.')
-parser.add_argument('--output', '-o', default='test.plist',
+parser.add_argument('--output', '-o', default='/tmp/test.plist',
                     help='Output file name and path')
 parser.add_argument('--nested-array', '-na', type=int,
                     help='Levels of nesting for the array structure, default = 5')
