@@ -4,9 +4,6 @@ from ruamel.yaml.comments import CommentedSeq, CommentedMap
 import sys
 
 yaml_str = """
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!74 &7400000
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +143,7 @@ data['AnimationClip']['m_EditorCurves'][1]['curve']['m_Curve'] = []
 data['AnimationClip']['m_EditorCurves'][2]['curve']['m_Curve'] = []
 
 time = 0;
-for index in range(0, 100000, 1):
+for index in range(0, 500000, 1):
     time = index/10.0
     m_PositionCurve['value'] = D({'x' : time, 'y' : time, 'z' : 1})
     m_PositionCurve['time']  = time
