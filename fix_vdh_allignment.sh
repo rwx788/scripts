@@ -7,7 +7,6 @@ print_help()
   echo "Usage: fix_vdh_allignment.sh *.vhd"
 }
 
-
 if [ $# -eq 0 ]; then
     print_help
     exit 1
