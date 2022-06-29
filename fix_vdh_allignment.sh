@@ -20,5 +20,5 @@ size=$(qemu-img info -f raw --output json "$rawdisk" | gawk 'match($0, /"virtual
 rounded_size=$(((($size+$MB-1)/$MB)*$MB))
 echo "Rounded Size = $rounded_size"
 qemu-img resize "$rawdisk" $rounded_size
-rm -rf "$vhddisk"
+mv "$vhddisk" "$vhddisk.bak"
 qemu-img convert -f raw -o subformat=fixed,force_size -O vpc "$rawdisk" "$vhddisk"
