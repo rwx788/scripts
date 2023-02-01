@@ -1,4 +1,4 @@
-nnn# scripts
+# scripts
 
 ## dotnet
 
