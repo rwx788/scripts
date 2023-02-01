@@ -23,4 +23,4 @@ do
     esac
 done
 
-/usr/bin/ffmpeg -nostdin -y -i "$input_image" -i "$input_audio" -c:v libx264 -tune stillimage -c:a copy "$output_file"
+/usr/bin/ffmpeg -y -r 1 -i "$input_image" -i "$input_audio" -tune stillimage -shortest -c:v libx264 -c:a copy "$output_file"
