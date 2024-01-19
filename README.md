@@ -33,5 +33,6 @@ To install dotnet sdks on arm64 macOS:
 ```
 In case `dotnet` command cannot be found in the PATH, create a symlink to the /usr/local/bin:
 ```bash
+# mkdir -p /usr/local/bin/
 $ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 ```
