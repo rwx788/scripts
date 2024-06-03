@@ -36,3 +36,9 @@ In case `dotnet` command cannot be found in the PATH, create a symlink to the /u
 # mkdir -p /usr/local/bin/
 $ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 ```
+
+## Add tags to youtrack tickets
+In case you need to add tag to the list of tickets in the file, please run:
+```bash
+$ cat issues.txt | xargs -I {} bash add-tag.sh --issue {} --tag TAG --TOKEN $YT_TOKEN
+```
