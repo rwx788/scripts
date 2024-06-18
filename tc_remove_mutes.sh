@@ -12,7 +12,7 @@ while (( "$#" )); do
       issues="$2"
       shift 2
       ;;
-    --tag)
+    --token)
       token="$2"
       shift 2
       ;;
@@ -23,13 +23,9 @@ while (( "$#" )); do
       url="$2"
       shift 2
       ;;
-    --) # End of all options
-      shift
-      break
+    *)
+      usage
       ;;
-    *) # Anything unexpected
-      usage()
-      exit 1
   esac
 done
 
@@ -43,8 +39,10 @@ IFS=',' read -r -a issues_array <<< "$issues"
 ## now loop through the above array
 for i in "${issues_array[@]}"
 do
-   curl -H "Authorization: Bearer $Ttoken" \
+   full_url="$url/app/rest/mutes/id:$i"
+   echo $full_url
+   curl -H "Authorization: Bearer $token" \
    --header "Content-Type: application/json" \
    --request DELETE \
-   --url $url/app/rest/mutes/id:$i"
+   --url $full_url
 done
