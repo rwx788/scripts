@@ -16,7 +16,7 @@ while (( "$#" )); do
       tag="$2"
       shift 2
       ;;
-    --tag)
+    --token)
       token="$2"
       shift 2
       ;;
