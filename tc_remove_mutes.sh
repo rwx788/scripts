@@ -40,7 +40,7 @@ IFS=',' read -r -a issues_array <<< "$issues"
 for i in "${issues_array[@]}"
 do
    full_url="$url/app/rest/mutes/id:$i"
-   echo $full_url
+   echo "Removing mute by following URL: $full_url"
    curl -H "Authorization: Bearer $token" \
    --header "Content-Type: application/json" \
    --request DELETE \
